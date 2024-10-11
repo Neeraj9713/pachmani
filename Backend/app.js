@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "dotenv/config"; 
 import express from "express";
 const app = express();
 import authRoute from "./router/router.js";
@@ -29,6 +29,17 @@ app.use("/api/form", ContactRoute);
 app.use(errorMiddleware)
 
 
+
+connectdb().then(()=>{
+    app.listen(port,()=>{
+        console.log(`listen port no.. ${port}`);
+    })
+})
+
+
+
+
+
 // app.get("/",(req,res)=>{
 //     res.send("Data");
 // })
@@ -56,10 +67,3 @@ app.use(errorMiddleware)
 //         res.send(e);
 //     }
 // })
-
-
-connectdb().then(()=>{
-    app.listen(port,()=>{
-        console.log(`listen port no.. ${port}`);
-    })
-})
